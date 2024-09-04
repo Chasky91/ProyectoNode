@@ -1,7 +1,7 @@
-import http from 'node:http'
+import http from 'node:http' //metodo que nos permitira la comunicacion entre el cliente y el servidor
 import fs from 'node:fs'
 
-const puertoDeseado = process.env.PORT ?? 1234
+const puertoDeseado = process.env.PORT ?? 1234  //puerto por el que corre la  apliacaion
 
 const processRequest = (req, res) => {
 
@@ -16,17 +16,6 @@ const processRequest = (req, res) => {
 
         res.end('<h2> Contacto </h2>')
         
-    } else if(req.url === '/imagen') {
-        fs.readFile('./Clase01/img/sincrono.png', (err,data) => {
-            if(err) {
-                res.statusCode = 500
-                res.end('<h2> Error interno en el servidor </h2>')
-            } else {
-                res.setHeader('Content-Type', 'image/png')
-                res.end(data)
-            }
-        })
-
     } else {
         res.statusCode = 404
         res.end('<h2> 404    </h2>')
